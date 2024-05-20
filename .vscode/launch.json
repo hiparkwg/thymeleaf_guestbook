@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GuestbookApplication<guestbook>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "kr.jobtc.guestbook.GuestbookApplication",
+            "projectName": "guestbook",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
