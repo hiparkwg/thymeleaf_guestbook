@@ -6,6 +6,18 @@
     <title>list</title>
 </head>
 <body>
-    
+    <div>
+        <div class="list" th:each="vo : ${list}">
+            <div class="item">
+                <form name="gb" method="post">
+                    <input type="text" name="sno" th:value="${vo.sno}">
+                    <span class="id">[[${vo.id}]]</span>
+                    <span class="nal">[[${vo.nal}]]</span>
+                    <textarea class="doc" readonly onclick="view(this.form)">[[${vo.doc}]]</textarea><br/>
+                </form>
+            </div>
+            
+        </div>
+    </div>
 </body>
 </html>

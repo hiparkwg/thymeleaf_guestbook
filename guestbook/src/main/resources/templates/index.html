@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
+    <link rel="stylesheet" href="css/guestbook.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"  crossorigin="anonymous"></script>
+    <script defer src="js/guestbook.js"></script>
 </head>
 <body>
     <div id="index">
-        <div class="left">left</div>
-        <div class="right">right</div>
+        <div class="login">login/out</div>
+        <div class="center">
+            <div class="left" th:insert="~{guestbook/register.html}">left</div>
+            <div class="right"></div>
+        </div>
         <footer class="footer">footer</footer>
     </div>
 </body>

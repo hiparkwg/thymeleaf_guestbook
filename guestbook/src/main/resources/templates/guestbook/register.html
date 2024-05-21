@@ -6,6 +6,18 @@
     <title>register</title>
 </head>
 <body>
-    <div th:fragment></div>
+    <div class="register">
+        <h2>방명록</h2>
+        <form name="frmRegister" method="post">
+            <label>작성자<input type="text" name="id"> </label><br/>
+            <textarea class="doc" name="doc"></textarea><br/>
+            <label>암호<input type="password" name="pwd"> </label><br/>
+            <div class="btnZone">
+                <button type="button" class="btnRegister">저장</button>
+                <button type="button" class="btnModify">수정</button>
+                <button type="button" class="btnDelete">삭제</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
