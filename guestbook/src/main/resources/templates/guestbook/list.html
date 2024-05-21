@@ -7,16 +7,22 @@
 </head>
 <body>
     <div>
-        <div class="list" th:each="vo : ${list}">
-            <div class="item">
-                <form name="gb" method="post">
-                    <input type="text" name="sno" th:value="${vo.sno}">
-                    <span class="id">[[${vo.id}]]</span>
-                    <span class="nal">[[${vo.nal}]]</span>
-                    <textarea class="doc" readonly onclick="view(this.form)">[[${vo.doc}]]</textarea><br/>
-                </form>
+        <div class="list">
+            <div class="findZone">
+                <input type="text" class="findStr" th:value="${findStr}">
+                <button type="button" class="btnSearch">검색</button>
             </div>
-            
+            <div class="items" th:each="vo : ${list}">
+                <div class="item">
+                    <form name="gb" method="post">
+                        <input type="text" name="sno" th:value="${vo.sno}">
+                        <span class="id">[[${vo.id}]]</span>
+                        <span class="nal">[[${vo.nal}]]</span>
+                        <textarea class="doc" readonly onclick="view(this.form)">[[${vo.doc}]]</textarea><br/>
+                    </form>
+                </div>
+                
+            </div>
         </div>
     </div>
 </body>

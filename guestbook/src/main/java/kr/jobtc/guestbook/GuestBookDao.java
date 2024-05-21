@@ -14,6 +14,7 @@ public class GuestBookDao {
     public boolean register(GuestBookVo vo){
         boolean b = false;
         session = new MyFactory().getSession();
+    
         int cnt = session.insert("guestbook.register", vo);
         if(cnt>0){
             b=true;
@@ -35,4 +36,42 @@ public class GuestBookDao {
         session.close();
         return list;
     }
+
+    public GuestBookVo select(Integer sno){
+        GuestBookVo vo = null;
+        session = new MyFactory().getSession();
+        vo = session.selectOne("guestbook.select", sno);
+        String temp = vo.getDoc();
+        vo.setDoc(temp);
+        session.close();
+        return vo;
+    }
+    public boolean update(GuestBookVo vo){
+        boolean b=false;
+        session = new MyFactory().getSession();
+        int cnt = session.update("guestbook.update", vo);
+        if(cnt>0){
+            b=true;
+            session.commit();
+        }else{
+            session.rollback();
+        }
+        session.close();
+        return b;
+    }
+
+    public boolean delete(GuestBookVo vo){
+        boolean b=false;
+        session = new MyFactory().getSession();
+        int cnt = session.delete("guestbook.delete", vo);
+        if(cnt>0){
+            b=true;
+            session.commit();
+        }else{
+            session.rollback();
+        }
+        session.close();
+        return b;
+    }
+
 }

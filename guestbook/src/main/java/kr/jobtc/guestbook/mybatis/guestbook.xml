@@ -9,8 +9,19 @@
     </insert>
 
     <select id="search" parameterType="String" resultType="GuestBookVo">
-        select * from guestbook order by nal desc
+        select * from guestbook 
+        where doc like '%${_parameter}%'
+        order by nal desc
+    </select>
+    <select id="select" parameterType="Integer" resultType="GuestBookVo">
+        select * from guestbook where sno=#{_parameter}
     </select>
 
+    <update id="update" parameterType="GuestBookVo">
+        update guestbook set doc=#{doc} where sno=#{sno} and pwd=#{pwd}
+    </update>
+    <delete id="delete" parameterType="GuestBookVo">
+        delete from guestbook where sno=#{sno} and pwd=#{pwd}
+    </delete>
 
 </mapper>

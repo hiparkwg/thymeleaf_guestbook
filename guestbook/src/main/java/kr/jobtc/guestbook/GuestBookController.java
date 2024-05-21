@@ -30,10 +30,31 @@ public class GuestBookController {
     public ModelAndView search(String findStr){
         ModelAndView mv = new ModelAndView();
         List<GuestBookVo> list = dao.search(findStr);
-
         mv.addObject("list", list);
+        mv.addObject("findStr", findStr);
         mv.setViewName("guestbook/list");
         return mv;
+    }
+
+    @RequestMapping(path="/select")
+    public String select(int sno){
+       String data = "";
+       GuestBookVo vo = dao.select(sno);
+        return vo.toJSON();
+    }
+
+    @RequestMapping(path="/update")
+    public boolean select(GuestBookVo vo){
+        boolean b=false;
+        b = dao.update(vo);
+        return b;
+    }
+
+    @RequestMapping(path="/delete")
+    public boolean delete(GuestBookVo vo){
+        boolean b=false;
+        b = dao.delete(vo);
+        return b;
     }
 
 }
