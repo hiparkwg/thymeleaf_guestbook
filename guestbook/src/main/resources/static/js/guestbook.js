@@ -1,6 +1,7 @@
 /* register -------------- */
 $(function(){
     load();
+    clearForm();
 })
 
 
@@ -25,6 +26,7 @@ if(btnLogin !=null){
             type  : "POST",
             data  : frm,
             success : (resp)=>{
+                sessionStorage.setItem("id", temp.id.value);
                 location.href="/";
             }
         })
@@ -36,6 +38,7 @@ if(btnLogout !=null){
             url   : "/logout",
             type  : "GET",
             success : (resp)=>{
+                sessionStorage.setItem("id", null);
                 location.href="/";
             }
         })
@@ -99,8 +102,15 @@ let view = (frm, id)=>{
             frmRegister.doc.value = temp;
 
             document.querySelector(".btnRegister").disabled=true;
-            document.querySelector(".btnModify").disabled=false;
-            document.querySelector(".btnDelete").disabled=false;
+            if(id == json.id){
+                document.querySelector(".btnModify").disabled=false;
+                document.querySelector(".btnDelete").disabled=false;
+
+            }else{
+                document.querySelector(".btnModify").disabled=true;
+                document.querySelector(".btnDelete").disabled=true;
+
+            }
         }
     })
 }
@@ -146,12 +156,20 @@ btnDelete.onclick = ()=>{
 
 let clearForm=()=>{
     let frm = document.frmRegister;
-    frm.sno.value='';
-    frm.id.value='';
+    let id = sessionStorage.getItem("id");
+    console.log('id', id)
+    if(id=='null'){
+        document.querySelector(".btnRegister").disabled=true;
+        frm.id.value='';
+    }else{
+        document.querySelector(".btnRegister").disabled=false;
+        frm.id.value=id;
+    }
+
+    frm.sno.value='0';
     frm.doc.value='';
     frm.pwd.value='';
 
-    document.querySelector(".btnRegister").disabled=false;
     document.querySelector(".btnModify").disabled=true;
     document.querySelector(".btnDelete").disabled=true;
 
