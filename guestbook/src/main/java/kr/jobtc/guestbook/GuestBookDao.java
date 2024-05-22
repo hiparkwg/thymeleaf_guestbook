@@ -42,7 +42,6 @@ public class GuestBookDao {
         session = new MyFactory().getSession();
         List<GuestBookVo> list = session.selectList("guestbook.search", findStr);
 
-
         session.close();
         return list;
     }
@@ -51,8 +50,6 @@ public class GuestBookDao {
         GuestBookVo vo = null;
         session = new MyFactory().getSession();
         vo = session.selectOne("guestbook.select", sno);
-        String temp = vo.getDoc();
-        vo.setDoc(temp);
         session.close();
         return vo;
     }
