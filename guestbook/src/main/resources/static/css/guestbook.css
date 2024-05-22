@@ -6,11 +6,16 @@
     margin:20px auto;
 }
 #index .login{
-    height:40px;
+    height:44px;
     background-color: #aaa;
     padding:5px;
     margin-bottom:3px;
-    line-height: 30px;
+    line-height: 34px;
+    text-align: right;
+}
+#index .login *{
+    height:24px;
+    vertical-align: middle;
 }
 #index .center{
     height: 700px;

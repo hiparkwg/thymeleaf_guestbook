@@ -18,7 +18,7 @@
         </form>
     </th:block>
     <th:block th:if="${session.id ne null}">
-        반가워요 [[${session.id}]]님.
+        반가워요 <font color='#ff0'>[[${session.name}]] </font>님.
         <button type="button" class="btnLogout">로그아웃</button>
     </th:block>    
 </body>
