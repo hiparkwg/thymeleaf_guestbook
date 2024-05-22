@@ -7,9 +7,14 @@ $(function(){
 let btnRegister = document.querySelector(".btnRegister");
 let btnModify = document.querySelector(".btnModify");
 let btnDelete = document.querySelector(".btnDelete");
+let btnCancle = document.querySelector(".btnCancle");
 
 let btnLogin = document.querySelector(".btnLogin");
 let btnLogout = document.querySelector(".btnLogout");
+
+btnCancle.onclick = ()=>{
+    clearForm();
+}
 
 if(btnLogin !=null){
     btnLogin.onclick = ()=>{
@@ -78,7 +83,7 @@ let load = (findStr)=>{
 }
 
 
-let view = (frm)=>{
+let view = (frm, id)=>{
     $.ajax({
         url   : "/select",
         type  : "GET",
@@ -92,6 +97,10 @@ let view = (frm)=>{
             let temp = json.doc.replace("\\n", "\n");
             temp = temp.replace("\\r", "\r")
             frmRegister.doc.value = temp;
+
+            document.querySelector(".btnRegister").disabled=true;
+            document.querySelector(".btnModify").disabled=false;
+            document.querySelector(".btnDelete").disabled=false;
         }
     })
 }
@@ -141,4 +150,9 @@ let clearForm=()=>{
     frm.id.value='';
     frm.doc.value='';
     frm.pwd.value='';
+
+    document.querySelector(".btnRegister").disabled=false;
+    document.querySelector(".btnModify").disabled=true;
+    document.querySelector(".btnDelete").disabled=true;
+
 }

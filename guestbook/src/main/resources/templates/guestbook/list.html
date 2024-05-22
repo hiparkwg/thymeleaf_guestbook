@@ -18,7 +18,8 @@
                         <input type="text" name="sno" th:value="${vo.sno}">
                         <span class="id">[[${vo.id}]]</span>
                         <span class="nal">[[${vo.nal}]]</span>
-                        <textarea class="doc" readonly onclick="view(this.form)">[[${vo.doc}]]</textarea><br/>
+                        <textarea class="doc" readonly 
+                                th:onClick="view(this.form, [[${session.id}]])">[[${vo.doc}]]</textarea><br/>
                     </form>
                 </div>
                 
