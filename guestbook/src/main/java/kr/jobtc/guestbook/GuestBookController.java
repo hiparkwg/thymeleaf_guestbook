@@ -23,13 +23,15 @@ public class GuestBookController {
     }
 
     @RequestMapping(path="/login")
-    public String login(GuestBookVo vo, HttpSession session){
+    public boolean login(GuestBookVo vo, HttpSession session){
+        boolean b=false;
         String name = dao.login(vo);
         if(name !=null){
+            b=true;
             session.setAttribute("id", vo.getId());
             session.setAttribute("name", name);
         }
-        return name;
+        return b;
     }
 
     @RequestMapping(path="/logout")

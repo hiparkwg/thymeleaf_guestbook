@@ -26,8 +26,12 @@ if(btnLogin !=null){
             type  : "POST",
             data  : frm,
             success : (resp)=>{
-                sessionStorage.setItem("id", temp.id.value);
-                location.href="/";
+                if(resp){
+                    sessionStorage.setItem("id", temp.id.value);
+                    location.href="/";
+                }else{
+                    alert("다시...")
+                }
             }
         })
     }
