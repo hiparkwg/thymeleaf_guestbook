@@ -57,7 +57,7 @@ let view = (frm)=>{
             let json = JSON.parse(resp);
             frmRegister.sno.value = json.sno;
             frmRegister.id.value = json.id;
-            console.log(json.doc)
+            frmRegister.pwd.value = '';
             let temp = json.doc.replace("\\n", "\n");
             temp = temp.replace("\\r", "\r")
             frmRegister.doc.value = temp;
