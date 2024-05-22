@@ -11,6 +11,16 @@ import kr.jobtc.guestbook.mybatis.MyFactory;
 public class GuestBookDao {
     
     SqlSession session;
+
+
+    public String login(GuestBookVo vo){
+        session = new MyFactory().getSession();
+        String name = session.selectOne("guestbook.login", vo);
+
+        session.close();
+        return name;
+    }
+
     public boolean register(GuestBookVo vo){
         boolean b = false;
         session = new MyFactory().getSession();

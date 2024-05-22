@@ -8,6 +8,37 @@ let btnRegister = document.querySelector(".btnRegister");
 let btnModify = document.querySelector(".btnModify");
 let btnDelete = document.querySelector(".btnDelete");
 
+let btnLogin = document.querySelector(".btnLogin");
+let btnLogout = document.querySelector(".btnLogout");
+
+if(btnLogin !=null){
+    btnLogin.onclick = ()=>{
+        let temp = document.frmLogin;
+        let frm = $(temp).serialize();
+        $.ajax({
+            url   : "/login",
+            type  : "POST",
+            data  : frm,
+            success : (resp)=>{
+                location.href="/";
+            }
+        })
+    }
+}
+if(btnLogout !=null){
+    btnLogout.onclick = ()=>{
+        $.ajax({
+            url   : "/logout",
+            type  : "GET",
+            success : (resp)=>{
+                location.href="/";
+            }
+        })
+    }
+}
+
+
+
 
 btnRegister.onclick = ()=>{
     let frm = document.frmRegister;

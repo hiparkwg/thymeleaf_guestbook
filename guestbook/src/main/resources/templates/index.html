@@ -10,7 +10,9 @@
 </head>
 <body>
     <div id="index">
-        <div class="login">login/out</div>
+        <div class="login">
+            <th:block th:insert="~{login.html}"/>
+        </div>
         <div class="center">
             <div class="left" th:insert="~{guestbook/register.html}">left</div>
             <div class="right"></div>

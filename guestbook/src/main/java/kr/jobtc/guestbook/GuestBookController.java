@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class GuestBookController {
     
@@ -14,11 +16,28 @@ public class GuestBookController {
     GuestBookDao dao;
 
     @RequestMapping(path="/")
-    public ModelAndView index(){
+    public ModelAndView index(HttpSession httpSession){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
         return mv;
     }
+
+    @RequestMapping(path="/login")
+    public String login(GuestBookVo vo, HttpSession session){
+        String name = dao.login(vo);
+        if(name !=null){
+            session.setAttribute("id", vo.getId());
+            session.setAttribute("name", name);
+        }
+        return name;
+    }
+
+    @RequestMapping(path="/logout")
+    public void logout(HttpSession session){
+        session.setAttribute("id", null);
+        session.setAttribute("name", null);
+    }
+
 
     @RequestMapping(path="/register")
     public boolean register(GuestBookVo vo){

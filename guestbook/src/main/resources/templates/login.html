@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><login>
+    <logout></logout></title>
+</head>
+<body>
+    <th:block th:if="${session.id eq null}">
+        <form name="frmLogin" method="post">
+            <label>아이디</label>
+            <input type="text" name="id" size="10">
+            <label>암호</label>
+            <input type="password" name="pwd" size="8">
+            <button type="button" class="btnLogin">로그인</button>
+
+        </form>
+    </th:block>
+    <th:block th:if="${session.id ne null}">
+        반가워요 [[${session.id}]]님.
+        <button type="button" class="btnLogout">로그아웃</button>
+    </th:block>    
+</body>
+</html>
