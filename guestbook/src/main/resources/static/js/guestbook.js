@@ -158,7 +158,7 @@ let clearForm=()=>{
     let frm = document.frmRegister;
     let id = sessionStorage.getItem("id");
     console.log('id', id)
-    if(id=='null'){
+    if(id=='null' || id==null){
         document.querySelector(".btnRegister").disabled=true;
         frm.id.value='';
     }else{
