@@ -54,6 +54,27 @@
 }
 
 /* list ------------------------ */
+.list .findZone{
+    margin-bottom:20px;
+    display: flex;
+    background-color: #fff;
+    padding:7px;
+    border-radius: 10px;
+}
+.list .findZone *{
+    height:30px;
+    font-size:18px;
+    vertical-align: middle;
+    border:0;
+}
+.list .findZone .findStr{
+    margin-right:2px;
+    border:0;
+    flex-grow: 1;
+    padding:0 10px;
+    background-color: #eee;
+}
+
 .list .item{
     position: relative;
     margin-bottom:10px;
