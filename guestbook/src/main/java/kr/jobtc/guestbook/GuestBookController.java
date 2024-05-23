@@ -59,13 +59,14 @@ public class GuestBookController {
 
     @RequestMapping(path="/select")
     public String select(int sno){
-       String data = "";
-       GuestBookVo vo = dao.select(sno);
-        return vo.toJSON();
+        String data = "";
+        GuestBookVo vo = dao.select(sno);
+        data = vo.toJSON();
+        return data;
     }
 
     @RequestMapping(path="/update")
-    public boolean select(GuestBookVo vo){
+    public boolean update(GuestBookVo vo){
         boolean b=false;
         b = dao.update(vo);
         return b;
